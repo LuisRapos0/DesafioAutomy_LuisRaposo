@@ -61,6 +61,6 @@ Este comando irá então iniciar a aplicação em um terminal bash gerado no con
 
 3. Interface no terminal bash para navegação do app.
 
-4. Realizar consultas no banco de dados por meio de Query's, com esse projeto especificando requisições de baterias futuras, passadas e todas atreladas ao usuário.
+4. Realizar consultas no banco de dados por meio de Queries, com esse projeto especificando requisições de baterias futuras, passadas e todas atreladas ao usuário.
 
 5. Feitas as consultas, receber e tratar os dados para produzir no terminal bash relatórios contendo as informações relevantes.
