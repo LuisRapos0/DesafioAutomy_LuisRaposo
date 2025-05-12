@@ -6,34 +6,34 @@ size_t write_callback(void *ptr, size_t size, size_t nmemb, std::string *data) {
     return total_size;
 }
 
-std::vector <Bateria> Consultas::requestNoFilter (const std::string token) {
+std::vector<Bateria> Consultas::requestNoFilter(const std::string token, const std::string email) {
     nlohmann::json request_data = {
-        {"query", "SELECT * FROM desafio.cadastro_baterias_desafio"},
+        {"query", "SELECT * FROM desafio.cadastro_baterias_desafio WHERE email = '" + email + "'"},
         {"db", "desafio"}
     };
 
     return makeRequest(token, request_data);
 }
 
-std::vector <Bateria> Consultas::requestScheduledBateries (const std::string token) {
+std::vector<Bateria> Consultas::requestScheduledBateries(const std::string token, const std::string email) {
     nlohmann::json request_data = {
-        {"query", "SELECT * FROM desafio.cadastro_baterias_desafio WHERE STR_TO_DATE(data_agendamento, '%d/%m/%Y') >= CURDATE();"},
+        {"query", "SELECT * FROM desafio.cadastro_baterias_desafio WHERE STR_TO_DATE(data_agendamento, '%d/%m/%Y') >= CURDATE() AND email = '" + email + "'"},
         {"db", "desafio"}
     };
 
     return makeRequest(token, request_data);
 }
 
-std::vector <Bateria> Consultas::requestPastBateries (const std::string token) {
+std::vector<Bateria> Consultas::requestPastBateries (const std::string token, const std::string email) {
     nlohmann::json request_data = {
-        {"query", "SELECT * FROM desafio.cadastro_baterias_desafio WHERE STR_TO_DATE(data_agendamento, '%d/%m/%Y') < CURDATE();"},
+        {"query", "SELECT * FROM desafio.cadastro_baterias_desafio WHERE STR_TO_DATE(data_agendamento, '%d/%m/%Y') < CURDATE() AND email = '" + email + "'"},
         {"db", "desafio"}
     };
 
     return makeRequest(token, request_data);
 }
 
-std::vector <Bateria> Consultas::makeRequest (const std::string token, nlohmann::json request_data) {
+std::vector<Bateria> Consultas::makeRequest (const std::string token, nlohmann::json request_data) {
     std::vector <Bateria> agendamentos;
     CURL *curl;
     CURLcode response;

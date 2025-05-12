@@ -85,25 +85,49 @@ std::string Terminal::catchPassword () {
     return password;
 }
 
+std::string Terminal::catchEmail () {
+    std::string email;
+    std::cout << "---------------------------------------------------------------" << "\n";
+    std::cout << "      Antes de prosseguir, por favor insira o seu e-mail:" << "\n";
+    std::cout << "---------------------------------------------------------------" << "\n";
+    std::cout << "\n";
+    std::cout << "E-mail: ";
+    std::getline (std::cin, email);
+    std::cout << std::endl;
+    
+    return email;
+}
+
 void Terminal::printRequestResultsAll (std::vector<Bateria> baterias) {
     system ("clear");
-    std::cout << "---------------------------------------------------------------" << "\n";
-    std::cout << " Requisição feita com sucesso. Exibindo todas as baterias:" << "\n";
-    std::cout << "---------------------------------------------------------------" << "\n";
-    std::cout << std::endl;
 
     std::vector<Bateria> sortedBaterias = bateria_sorting.sortFutureFirst(baterias);
 
-    for (size_t i = 0; i+1 < sortedBaterias.size(); ++i) {
-        std::cout << "=========================================================================" << "\n";
-        std::cout << "Bateria " << i+1 << ":" << "\n";
-        std::cout << "Agendada para o dia " << sortedBaterias[i].data_agendamento << " às " << sortedBaterias[i].horario_agendamento<< "\n";
-        std::cout << "Reservada no nome de " << sortedBaterias[i].nome << "\n";
-        std::cout << "Reserva feita para " << sortedBaterias[i].qtde_pessoas << " pessoas" << "\n";
+    if (sortedBaterias.empty()){
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << "Requisição feita com sucesso, mas nenhuma bateria foi encontrada."<< "\n";
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << "\n";
+        std::cout << "Por favor, verifique o e-mail de consulta!" << "\n";
+        std::cout << "\n";
     }
+    else {
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << " Requisição feita com sucesso. Exibindo todas as baterias:" << "\n";
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << "\n";
 
-    std::cout << "=========================================================================" << "\n";
-    std::cout << "\n";
+        for (size_t i = 0; i+1 < sortedBaterias.size(); ++i) {
+            std::cout << "=========================================================================" << "\n";
+            std::cout << "Bateria " << i+1 << ":" << "\n";
+            std::cout << "Agendada para o dia " << sortedBaterias[i].data_agendamento << " às " << sortedBaterias[i].horario_agendamento<< "\n";
+            std::cout << "Reservada no nome de " << sortedBaterias[i].nome << "\n";
+            std::cout << "Reserva feita para " << sortedBaterias[i].qtde_pessoas << " pessoas" << "\n";
+        }
+
+        std::cout << "=========================================================================" << "\n";
+        std::cout << "\n";
+        }
     std::cout << "Pressione Enter para retornar ao menu de consultas."; 
     std::cout << std::endl;
 
@@ -112,23 +136,34 @@ void Terminal::printRequestResultsAll (std::vector<Bateria> baterias) {
 
 void Terminal::printRequestResultsFuture (std::vector<Bateria> baterias) {
     system ("clear");
-    std::cout << "---------------------------------------------------------------" << "\n";
-    std::cout << " Requisição feita com sucesso. Exibindo as baterias agendadas:" << "\n";
-    std::cout << "---------------------------------------------------------------" << "\n";
-    std::cout << std::endl;
 
     std::vector<Bateria> sortedBaterias = bateria_sorting.sortMostRecentFirst(baterias);
 
-    for (size_t i = 0; i+1 < sortedBaterias.size(); ++i) {
-        std::cout << "=========================================================================" << "\n";
-        std::cout << "Bateria " << i+1 << ":" << "\n";
-        std::cout << "Agendada para o dia " << sortedBaterias[i].data_agendamento << " às " << sortedBaterias[i].horario_agendamento<< "\n";
-        std::cout << "Reservada no nome de " << sortedBaterias[i].nome << "\n";
-        std::cout << "Reserva feita para " << sortedBaterias[i].qtde_pessoas << " pessoas" << "\n";
+    if (sortedBaterias.empty()){
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << "Requisição feita com sucesso, mas nenhuma bateria foi encontrada."<< "\n";
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << "\n";
+        std::cout << "Por favor, verifique o e-mail de consulta!" << "\n";
+        std::cout << "\n";
     }
+    else {
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << " Requisição feita com sucesso. Exibindo as baterias agendadas:" << "\n";
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << "\n";
 
-    std::cout << "=========================================================================" << "\n";
-    std::cout << "\n";
+        for (size_t i = 0; i+1 < sortedBaterias.size(); ++i) {
+            std::cout << "=========================================================================" << "\n";
+            std::cout << "Bateria " << i+1 << ":" << "\n";
+            std::cout << "Agendada para o dia " << sortedBaterias[i].data_agendamento << " às " << sortedBaterias[i].horario_agendamento<< "\n";
+            std::cout << "Reservada no nome de " << sortedBaterias[i].nome << "\n";
+            std::cout << "Reserva feita para " << sortedBaterias[i].qtde_pessoas << " pessoas" << "\n";
+        }
+
+        std::cout << "=========================================================================" << "\n";
+        std::cout << "\n";
+        }
     std::cout << "Pressione Enter para retornar ao menu de consultas."; 
     std::cout << std::endl;
 
@@ -137,23 +172,34 @@ void Terminal::printRequestResultsFuture (std::vector<Bateria> baterias) {
 
 void Terminal::printRequestResultsPast (std::vector<Bateria> baterias) {
     system ("clear");
-    std::cout << "---------------------------------------------------------------" << "\n";
-    std::cout << " Requisição feita com sucesso. Exibindo as baterias passadas:" << "\n";
-    std::cout << "---------------------------------------------------------------" << "\n";
-    std::cout << std::endl;
 
     std::vector<Bateria> sortedBaterias = bateria_sorting.sortMostRecentFirst(baterias);
 
-    for (size_t i = 0; i+1 < sortedBaterias.size(); ++i) {
-        std::cout << "=========================================================================" << "\n";
-        std::cout << "Bateria " << i+1 << ":" << "\n";
-        std::cout << "Agendada para o dia " << sortedBaterias[i].data_agendamento << " às " << sortedBaterias[i].horario_agendamento<< "\n";
-        std::cout << "Reservada no nome de " << sortedBaterias[i].nome << "\n";
-        std::cout << "Reserva feita para " << sortedBaterias[i].qtde_pessoas << " pessoas" << "\n";
+    if (sortedBaterias.empty()){
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << "Requisição feita com sucesso, mas nenhuma bateria foi encontrada."<< "\n";
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << "\n";
+        std::cout << "Por favor, verifique o e-mail de consulta!" << "\n";
+        std::cout << "\n";
     }
+    else {
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << " Requisição feita com sucesso. Exibindo as baterias passadas:" << "\n";
+        std::cout << "---------------------------------------------------------------" << "\n";
+        std::cout << "\n";
 
-    std::cout << "=========================================================================" << "\n";
-    std::cout << "\n";
+        for (size_t i = 0; i+1 < sortedBaterias.size(); ++i) {
+            std::cout << "=========================================================================" << "\n";
+            std::cout << "Bateria " << i+1 << ":" << "\n";
+            std::cout << "Agendada para o dia " << sortedBaterias[i].data_agendamento << " às " << sortedBaterias[i].horario_agendamento<< "\n";
+            std::cout << "Reservada no nome de " << sortedBaterias[i].nome << "\n";
+            std::cout << "Reserva feita para " << sortedBaterias[i].qtde_pessoas << " pessoas" << "\n";
+        }
+
+        std::cout << "=========================================================================" << "\n";
+        std::cout << "\n";
+        }
     std::cout << "Pressione Enter para retornar ao menu de consultas."; 
     std::cout << std::endl;
 

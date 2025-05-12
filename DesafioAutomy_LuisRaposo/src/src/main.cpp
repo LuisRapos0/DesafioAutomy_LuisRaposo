@@ -77,24 +77,34 @@ int main() {
             char input_digit = terminal.catchDigit();
             switch (input_digit){
             case '1':
+                user.setEmail(terminal.catchEmail());
+
                 user.setActiveToken(user.requestNewTokenIfExpired());
-                responsed_baterias = requests.requestNoFilter(user.getActiveToken());
+                responsed_baterias = requests.requestNoFilter(user.getActiveToken(), user.getEmail());
+
                 terminal.printRequestResultsAll(responsed_baterias);
                 break;
             case '2':
+                user.setEmail(terminal.catchEmail());
+
                 user.setActiveToken(user.requestNewTokenIfExpired());
-                responsed_baterias = requests.requestScheduledBateries(user.requestNewTokenIfExpired());
+                responsed_baterias = requests.requestScheduledBateries(user.requestNewTokenIfExpired(), user.getEmail());
+
                 terminal.printRequestResultsFuture(responsed_baterias);
                 break;
             case '3':
+                user.setEmail(terminal.catchEmail());
+
                 user.setActiveToken(user.requestNewTokenIfExpired());
-                responsed_baterias = requests.requestPastBateries(user.requestNewTokenIfExpired());
+                responsed_baterias = requests.requestPastBateries(user.requestNewTokenIfExpired(), user.getEmail());
+
                 terminal.printRequestResultsPast(responsed_baterias);
                 break;
             case '4':
                 logged_in = false;
                 user.setAttributes("","");
                 user.setActiveToken("");
+                user.setEmail("");
                 break;
             case ' ':
                 break;

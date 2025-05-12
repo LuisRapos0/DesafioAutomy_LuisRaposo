@@ -37,6 +37,9 @@ public:
     // Printa a interface e recebe o valor "password" do terminal
     std::string catchPassword ();
 
+    // Printa a interface e recebe o valor "email" do terminal
+    std::string catchEmail ();
+
     // Printa no terminal os resultados de uma consulta de todas as baterias associadas ao usuário
     void printRequestResultsAll (std::vector<Bateria> baterias);
 

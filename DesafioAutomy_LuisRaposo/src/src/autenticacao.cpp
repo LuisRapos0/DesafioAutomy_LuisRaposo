@@ -8,6 +8,10 @@ std::string Autenticacao::getActiveToken () {
     return active_token;
 }
 
+std::string Autenticacao::getEmail () {
+    return email;
+}
+
 void Autenticacao::setAttributes (std::string new_username, std::string new_password) {
     username = new_username;
     password = new_password;
@@ -15,6 +19,10 @@ void Autenticacao::setAttributes (std::string new_username, std::string new_pass
 
 void Autenticacao::setActiveToken (std::string new_active_token) {
     active_token = new_active_token;
+}
+
+void Autenticacao::setEmail (std::string new_email) {
+    email = new_email;
 }
 
 std::string Autenticacao::requestNewTokenIfExpired () {

@@ -45,7 +45,13 @@ Este comando irá então iniciar a aplicação em um terminal bash gerado no con
 
     Senha: "ygalepsm"
 
-4. Feita a autenticação, você será redirecionado a uma página onde estão disponíveis os tipos de consulta especificados no desafio.
+4. Feita a autenticação, você será redirecionado a uma página onde estão disponíveis os tipos de consulta especificados no desafio. Novamente, digite o número correspondente à opção desejada.
+
+5. Feita a requisição, insira o email a ser utilizado na consulta. Nesse caso, utilizar (sem as aspas):
+
+    E-mail: "john.doe@gmail.com"
+
+6. O usuário pode então fazer quantas consultas quiser, e o token será automaticamente renovado se estiver para expirar.
 
 # Funções Disponíveis
 

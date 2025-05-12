@@ -22,13 +22,13 @@ size_t write_callback(void* contents, size_t size, size_t nmemb, std::string* ou
 class Consultas {
 public:
     // Faz uma requisição no db sem filtros e retorna um vetor com todos os agendamentos relevantes
-    std::vector <Bateria> requestNoFilter (const std::string token);
+    std::vector <Bateria> requestNoFilter (const std::string token, const std::string email);
 
     // Faz uma requisição no db por baterias futuras e retorna um vetor com todos os agendamentos relevantes
-    std::vector <Bateria> requestScheduledBateries (const std::string token);
+    std::vector <Bateria> requestScheduledBateries (const std::string token, const std::string email);
 
     // Faz uma requisição no db por baterias passadas e retorna um vetor com todos os agendamentos relevantes
-    std::vector <Bateria> requestPastBateries (const std::string token);
+    std::vector <Bateria> requestPastBateries (const std::string token, const std::string email);
 
 private:
     // Faz a requisição <request_data> no db e retorna um vetor com todos os agendamentos relevantes

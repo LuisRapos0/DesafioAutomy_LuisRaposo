@@ -23,11 +23,17 @@ public:
     // Retorna o <active_token> do usuário da seção
     std::string getActiveToken ();
 
+    // Retorna o <email> do usuário da seção
+    std::string getEmail ();
+
     // Seta o <username> e <password> da seção
     void setAttributes (std::string new_username, std::string new_password);
 
     // Seta o <active_token> da seção
     void setActiveToken (std::string new_active_token);
+
+    // Seta o <email> da seção
+    void setEmail (std::string new_email);
 
     // Faz uma requisicao de um novo token
     std::string requestNewToken ();
@@ -45,6 +51,7 @@ private:
     std::chrono::system_clock::time_point expiration_time;
     std::string username;
     std::string password;
+    std::string email;
     std::string active_token;
 };
 
