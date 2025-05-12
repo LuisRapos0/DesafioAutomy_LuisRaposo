@@ -1,0 +1,8 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Desafio-Github-Automy-LuisRaposo
+    stdin_open: true
+    tty: true
