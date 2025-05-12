@@ -88,7 +88,7 @@ std::string Terminal::catchPassword () {
 void Terminal::printRequestResultsAll (std::vector<Bateria> baterias) {
     system ("clear");
     std::cout << "---------------------------------------------------------------" << "\n";
-    std::cout << " Processando a Requisição. Sua consulta será exibida em breve." << "\n";
+    std::cout << " Requisição feita com sucesso. Exibindo todas as baterias:" << "\n";
     std::cout << "---------------------------------------------------------------" << "\n";
     std::cout << std::endl;
 
@@ -110,10 +110,35 @@ void Terminal::printRequestResultsAll (std::vector<Bateria> baterias) {
     std::cin.get(); 
 }
 
-void Terminal::printRequestResultsMostRecent (std::vector<Bateria> baterias) {
+void Terminal::printRequestResultsFuture (std::vector<Bateria> baterias) {
     system ("clear");
     std::cout << "---------------------------------------------------------------" << "\n";
-    std::cout << " Processando a Requisição. Sua consulta será exibida em breve." << "\n";
+    std::cout << " Requisição feita com sucesso. Exibindo as baterias agendadas:" << "\n";
+    std::cout << "---------------------------------------------------------------" << "\n";
+    std::cout << std::endl;
+
+    std::vector<Bateria> sortedBaterias = bateria_sorting.sortMostRecentFirst(baterias);
+
+    for (size_t i = 0; i+1 < sortedBaterias.size(); ++i) {
+        std::cout << "=========================================================================" << "\n";
+        std::cout << "Bateria " << i+1 << ":" << "\n";
+        std::cout << "Agendada para o dia " << sortedBaterias[i].data_agendamento << " às " << sortedBaterias[i].horario_agendamento<< "\n";
+        std::cout << "Reservada no nome de " << sortedBaterias[i].nome << "\n";
+        std::cout << "Reserva feita para " << sortedBaterias[i].qtde_pessoas << " pessoas" << "\n";
+    }
+
+    std::cout << "=========================================================================" << "\n";
+    std::cout << "\n";
+    std::cout << "Pressione Enter para retornar ao menu de consultas."; 
+    std::cout << std::endl;
+
+    std::cin.get(); 
+}
+
+void Terminal::printRequestResultsPast (std::vector<Bateria> baterias) {
+    system ("clear");
+    std::cout << "---------------------------------------------------------------" << "\n";
+    std::cout << " Requisição feita com sucesso. Exibindo as baterias passadas:" << "\n";
     std::cout << "---------------------------------------------------------------" << "\n";
     std::cout << std::endl;
 

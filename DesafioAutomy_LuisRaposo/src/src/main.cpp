@@ -84,12 +84,12 @@ int main() {
             case '2':
                 user.setActiveToken(user.requestNewTokenIfExpired());
                 responsed_baterias = requests.requestScheduledBateries(user.requestNewTokenIfExpired());
-                terminal.printRequestResultsMostRecent(responsed_baterias);
+                terminal.printRequestResultsFuture(responsed_baterias);
                 break;
             case '3':
                 user.setActiveToken(user.requestNewTokenIfExpired());
                 responsed_baterias = requests.requestPastBateries(user.requestNewTokenIfExpired());
-                terminal.printRequestResultsMostRecent(responsed_baterias);
+                terminal.printRequestResultsPast(responsed_baterias);
                 break;
             case '4':
                 logged_in = false;

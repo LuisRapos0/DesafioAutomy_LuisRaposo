@@ -40,8 +40,11 @@ public:
     // Printa no terminal os resultados de uma consulta de todas as baterias associadas ao usuário
     void printRequestResultsAll (std::vector<Bateria> baterias);
 
-    // Printa no terminal os resultados de uma consulta de baterias, ordenadas por mais recentes primeiro
-    void printRequestResultsMostRecent (std::vector<Bateria> baterias);
+    // Printa no terminal os resultados de uma consulta das baterias que ainda não ocorreram associadas ao usuário
+    void printRequestResultsFuture (std::vector<Bateria> baterias);
+
+    // Printa no terminal os resultados de uma consulta das baterias que já ocorreram associadas ao usuário
+    void printRequestResultsPast (std::vector<Bateria> baterias);
     
 private:
     BateriaSorting bateria_sorting;
